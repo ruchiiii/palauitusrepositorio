@@ -1,0 +1,13 @@
+
+    participant browser
+    participant server
+
+    Note over browser: User types a note and clicks Save
+
+    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+    activate server
+    Note right of server: Server saves note to data store
+    server-->>browser: HTTP 201 Created
+    deactivate server
+
+    Note right of browser: JS adds new note to notes list and re-renders DOM — no page reload
